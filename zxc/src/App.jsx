@@ -10,14 +10,18 @@ import Register from "./pages/register";
 function App() {
   return (
     <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="register" element={<Register />} />
-      </Routes>
-      <Footer />
+      <div className="min-h-screen flex flex-col">
+        <Header />
+        <main className='flex-grow bg-gray-300'>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="register" element={<Register />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
     </BrowserRouter>
 
   );

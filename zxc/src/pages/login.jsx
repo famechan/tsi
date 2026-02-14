@@ -1,5 +1,5 @@
 const Login = () => {
-    return <h1>Авторизация</h1>
+    return <h1>Вход</h1>
 }
 
 export default Login
