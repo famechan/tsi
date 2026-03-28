@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+'''import React, { useState, useEffect } from 'react';
 
 interface AddModalProps {
   onAdd: (name: string) => void;
@@ -54,3 +54,4 @@ const AddModal: React.FC<AddModalProps> = ({ onAdd, onClose }) => {
 };
 
 export default AddModal;
+'''
