@@ -12,18 +12,17 @@ function App() {
     <BrowserRouter>
       <div className="min-h-screen flex flex-col">
         <Header />
-        <main className='flex-grow bg-gray-300'>
+        <main className="flex-grow bg-gray-300">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/login" element={<Login />} />
-            <Route path="register" element={<Register />} />
+            <Route path="/register" element={<Register />} />
           </Routes>
         </main>
         <Footer />
       </div>
     </BrowserRouter>
-
   );
 }
 

@@ -1,10 +1,29 @@
 import { Button } from "../components/Button";
 import { Input } from "../components/Input";
 import { Text } from "../components/Text";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Login = () => {
     const [value, setValue] = useState("");
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch("/api/login");
+                if (!response.ok) {
+                    throw new Error(`Request failed with status ${response.status}`);
+                }
+
+                const result = await response.json();
+                console.log(result);
+            } catch (error) {
+                console.error("Failed to fetch login data:", error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
     return(
         <div>
             <Text variant="title">Введите логин</Text>

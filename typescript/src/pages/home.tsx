@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Item from '../components/Item';
 import AddModal from '../components/AddModal';
 
@@ -10,19 +10,41 @@ const Home = () => {
         setItems([...items, newItem]);
     };
 
-    return(
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch('/api/home');
+                if (!response.ok) {
+                    throw new Error(`Request failed with status ${response.status}`);
+                }
+
+                const result = await response.json();
+                console.log(result);
+            } catch (error) {
+                console.error('Failed to fetch home data:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    return (
         <div className='max-w-md mx-auto mt-20 p-4 text-center'>
             <h1 className='text-2xl font-bold mb-6'>Список элементов</h1>
+
             <div className='mb-6'>
-                {items.map((item, idx) => <Item key={idx} name={item} />)}
+                {items.map((item, idx) => (
+                    <Item key={idx} name={item} />
+                ))}
             </div>
 
-            <button 
-                onClick={() => setShowModal(true)} 
+            <button
+                onClick={() => setShowModal(true)}
                 className='bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600'
             >
                 Добавить
             </button>
+
             {showModal && (
                 <AddModal
                     onClose={() => setShowModal(false)}
@@ -33,7 +55,7 @@ const Home = () => {
                 />
             )}
         </div>
-    )
-}
+    );
+};
 
 export default Home;
